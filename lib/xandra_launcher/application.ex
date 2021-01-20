@@ -17,7 +17,7 @@ defmodule XandraLauncher.Application do
   end
 
   defp cassandra_params() do
-    params = Mix.Project.config()[:app] |> Application.fetch_env!(:xandra)
+    params = Application.fetch_env!(:xandra_launcher, :xandra)
     fun = &Xandra.execute(&1, "USE #{params[:keyspace]}")
 
     [
